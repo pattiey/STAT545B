@@ -1,0 +1,85 @@
+---
+output: github_document
+---
+
+First load all required libraries.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+library(datateachr)
+library(gapminder)
+library(testthat)
+```
+
+# Exercise 1: Make a Function
+
+I will make a function that would have been useful in the mini-data analysis. This function takes a tibble and any number of variables as input, then returns the counts for each group in the specified variables, sorted in descending order. 
+
+```{r}
+#' Count by group(s)
+
+#' This function returns the counts of specified group(s) within a tibble, 
+#' sorted in decreasing order of count
+#' 
+#' @param data A tibble of interest the contains the data to pull counts from
+#' @param ... A list of variables present in the tibble to group-by. When not present, returns the total count in the tibble
+#' @return A tibble containing the summarized counts for each group in the variable(s) specified, sorted in decreasing order of count
+
+group_counts <- function(data, ...) {
+  stopifnot(is_tibble(data))
+  data %>% 
+    group_by(...) %>% 
+    summarise(count = n()) %>% 
+    arrange(desc(count))
+}
+```
+
+# Exercise 3: Include examples
+
+Show an example to group tree counts by neighbourhood using the `vancouver_trees` dataset from `datateachr`
+
+```{r}
+group_counts(vancouver_trees, neighbourhood_name)
+```
+
+Function can also be used with pipe function
+
+```{r}
+vancouver_trees %>% group_counts(neighbourhood_name)
+```
+
+An example grouping by multiple variables in the `vancouver_trees` dataset
+
+```{r}
+group_counts(vancouver_trees, neighbourhood_name, curb, height_range_id)
+```
+
+The function only works with tibbles, here is an example of it failing when a non-tibble is inputted,
+and then working with the same dataset as a tibble
+
+```{r error=TRUE}
+group_counts(iris, Species)
+group_counts(as_tibble(iris), Species)
+```
+
+# Exercise 4: Test the function
+
+Test for the scenarios:
+
+* `data` is a tibble, no variables to group-by (return the total count of the tibble)
+* `data` is a tibble, one variable to group-by that is present in the tibble
+* `data` is a tibble, multiple variables to group-by that are present in the tibble
+* `data` is a tibble, variable to group-by is not present in the tibble
+* `data` is a dataframe, function should throw an error
+* `data` is not a tibble, function should throw an error
+
+```{r}
+test_that("group_counts function works", {
+  expect_equal(dim(group_counts(gapminder)), c(1,1))
+  expect_equal(dim(group_counts(gapminder, continent)), c(5,2))
+  expect_equal(dim(group_counts(gapminder, continent, year)), c(60,3))
+  expect_error(group_counts(gapminder, some_wrong_var))
+  expect_error(group_counts(iris, Species))
+  expect_error(group_counts(123))
+})
+```
