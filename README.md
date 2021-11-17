@@ -18,7 +18,7 @@ You can install the development version of STAT545B from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("pattiey/STAT545B", ref = "0.1.0)
+devtools::install_github("pattiey/STAT545B", ref = "0.1.0")
 ```
 
 ## Example
