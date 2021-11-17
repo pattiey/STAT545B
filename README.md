@@ -1,15 +1,40 @@
-# STAT 545B Assignments for Pattie Ye
 
-This repository contains assignment work for STAT 545 2021WT1
+<!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Assignment B-1: Making a function
+# STAT545B
 
-This assignment covers making a function in R, documenting it, and testing it.
+<!-- badges: start -->
+<!-- badges: end -->
 
-Relevant project files 
+STAT545B contains the functions created for STAT545B 2021W1. The main
+function present in this package is `group_counts()` which returns the
+counts of specified group(s) within a tibble, sorted in decreasing order
+of count.
 
-| File name | Description |
-| --- | --- |
-| `Assignment1.Rmd` | R markdown file containing work for assignment 1 | 
-| `Assignment1.md` | Markdown file generated from `Assignment1.Rmd` |
+## Installation
 
+You can install the development version of STAT545B from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("pattiey/STAT545B", ref = "0.1.0)
+```
+
+## Example
+
+This is a basic example which shows you how to use the `group_counts`
+function in the `STAT545B` package:
+
+``` r
+library(STAT545B)
+suppressMessages(library(tidyverse))
+## basic example code
+(group_counts(as_tibble(iris), Species))
+#> # A tibble: 3 × 2
+#>   Species    count
+#>   <fct>      <int>
+#> 1 setosa        50
+#> 2 versicolor    50
+#> 3 virginica     50
+```

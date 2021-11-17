@@ -1,0 +1,14 @@
+Package: STAT545B
+Title: Functions for STAT545B
+Version: 0.1.0
+Authors@R: 
+    person("Pattie", "Ye", , "pye@bccrc.ca", role = c("aut", "cre"))
+Description: This package contains the functions created for STAT545B 2021W1. 
+    The main function present in this package is `group_counts()` which returns 
+    the counts of specified group(s) within a tibble, sorted in decreasing order of count.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports: 
+  tidyverse

@@ -1,0 +1,41 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# STAT545B
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+STAT545B contains the functions created for STAT545B 2021W1. The main function present in this package is `group_counts()` which returns the counts of specified group(s) within a tibble, sorted in decreasing order of count.
+
+## Installation
+
+You can install the development version of STAT545B from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("pattiey/STAT545B", ref = "0.1.0)
+```
+
+## Example
+
+This is a basic example which shows you how to use the `group_counts` function in the `STAT545B` package:
+
+```{r example}
+library(STAT545B)
+suppressMessages(library(tidyverse))
+## basic example code
+(group_counts(as_tibble(iris), Species))
+```
