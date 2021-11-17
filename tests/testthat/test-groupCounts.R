@@ -1,0 +1,9 @@
+library(gapminder)
+test_that("group_counts function works", {
+  expect_equal(dim(group_counts(gapminder)), c(1,1))
+  expect_equal(dim(group_counts(gapminder, continent)), c(5,2))
+  expect_equal(dim(group_counts(gapminder, continent, year)), c(60,3))
+  expect_error(group_counts(gapminder, some_wrong_var))
+  expect_error(group_counts(iris, Species))
+  expect_error(group_counts(123))
+})
