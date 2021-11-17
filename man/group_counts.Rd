@@ -19,8 +19,8 @@ This function returns the counts of specified group(s) within a tibble,
 sorted in decreasing order of count
 }
 \examples{
-group_counts(vancouver_trees, neighbourhood_name)
-vancouver_trees \%>\% group_counts(neighbourhood_name)
-group_counts(vancouver_trees, neighbourhood_name, curb, height_range_id)
-group_counts(as_tibble(iris), Species)
+group_counts(datateachr::vancouver_trees, neighbourhood_name)
+datateachr::vancouver_trees \%>\% group_counts(neighbourhood_name)
+group_counts(datateachr::vancouver_trees, neighbourhood_name, curb, height_range_id)
+group_counts(tibble::as_tibble(iris), Species)
 }

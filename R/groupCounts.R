@@ -11,15 +11,15 @@ library(datateachr)
 #' @param ... A list of variables present in the tibble to group-by. When not present, returns the total count in the tibble
 #' @return A tibble containing the summarized counts for each group in the variable(s) specified, sorted in decreasing order of count
 #' @examples
-#' group_counts(vancouver_trees, neighbourhood_name)
-#' vancouver_trees %>% group_counts(neighbourhood_name)
-#' group_counts(vancouver_trees, neighbourhood_name, curb, height_range_id)
-#' group_counts(as_tibble(iris), Species)
+#' group_counts(datateachr::vancouver_trees, neighbourhood_name)
+#' datateachr::vancouver_trees %>% group_counts(neighbourhood_name)
+#' group_counts(datateachr::vancouver_trees, neighbourhood_name, curb, height_range_id)
+#' group_counts(tibble::as_tibble(iris), Species)
 
 group_counts <- function(data, ...) {
-  stopifnot(is_tibble(data))
+  stopifnot(tibble::is_tibble(data))
   data %>%
-    group_by(...) %>%
-    summarise(count = n()) %>%
-    arrange(desc(count))
+    dplyr::group_by(...) %>%
+    dplyr::summarise(count = dplyr::n()) %>%
+    dplyr::arrange(dplyr::desc(count))
 }
