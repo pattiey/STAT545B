@@ -28,9 +28,8 @@ function in the `STAT545B` package:
 
 ``` r
 library(STAT545B)
-suppressMessages(library(tidyverse))
 ## basic example code
-(group_counts(as_tibble(iris), Species))
+group_counts(tibble::as_tibble(iris), Species)
 #> # A tibble: 3 × 2
 #>   Species    count
 #>   <fct>      <int>

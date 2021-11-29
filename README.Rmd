@@ -35,7 +35,6 @@ This is a basic example which shows you how to use the `group_counts` function i
 
 ```{r example}
 library(STAT545B)
-suppressMessages(library(tidyverse))
 ## basic example code
-(group_counts(as_tibble(iris), Species))
+group_counts(tibble::as_tibble(iris), Species)
 ```

@@ -1,6 +1,3 @@
-library(tidyverse)
-library(datateachr)
-
 #' @title  Count by group(s)
 
 #' @description This function returns the counts of specified group(s) within a tibble,
